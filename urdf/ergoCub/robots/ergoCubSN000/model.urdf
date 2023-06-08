@@ -833,9 +833,9 @@
   </joint>
   <link name="r_shoulder_2">
     <inertial>
-      <origin xyz="0.005113569084782329 -0.00021356072357139877 -0.02042558261794522" rpy="0.12008559189031787 -0.2297881760318691 1.288278055899408"/>
-      <mass value="0.439227"/>
-      <inertia ixx="0.000395699" ixy="5.0249e-05" ixz="-6.50761e-05" iyy="0.000320925" iyz="7.8196e-05" izz="0.000267432"/>
+      <origin xyz="0.005113569084782329 -0.00021356072357139877 -0.020425582617945217" rpy="0.0 -0.0 0.0"/>
+      <mass value="1.1"/>
+      <inertia ixx="0.0002904183655755115" ixy="-9.532002516688907e-07" ixz="-9.749545754218264e-05" iyy="0.00042717557357436873" iyz="-1.2259705596142474e-06" izz="0.0002664620608501199"/>
     </inertial>
     <visual>
       <origin xyz="0.013901412308925644 0.1996664041437421 -0.16804657793009403" rpy="0.12008559189031787 -0.2297881760318691 1.288278055899408"/>
@@ -863,9 +863,9 @@
   </joint>
   <link name="r_shoulder_3">
     <inertial>
-      <origin xyz="-8.316742504336366e-05 -3.0846217982133384e-05 -0.007966675096942724" rpy="0.12008559189031787 -0.2297881760318691 1.288278055899408"/>
-      <mass value="0.271466"/>
-      <inertia ixx="7.88881e-05" ixy="1.72745e-06" ixz="1.11496e-05" iyy="7.70973e-05" iyz="5.68308e-06" izz="0.0001241"/>
+      <origin xyz="-8.316742504336366e-05 -3.0846217982133384e-05 -0.007966675096942724" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.33"/>
+      <inertia ixx="7.62017972274572e-05" ixy="-3.664199685888531e-07" ixz="-3.711971474797771e-08" iyy="7.648525858926881e-05" iyz="-6.343131256892172e-08" izz="0.00012739834418327403"/>
     </inertial>
     <visual>
       <origin xyz="0.020751322852116103 0.19966607735058817 -0.11374685915473111" rpy="0.12008559189031787 -0.2297881760318691 1.288278055899408"/>
@@ -884,18 +884,18 @@
     </collision>
   </link>
   <joint name="r_arm_ft_sensor" type="fixed">
-    <origin xyz="-0.006849910543190453 3.2679315392636354e-07 -0.05429971877536288" rpy="0 0 0"/>
+    <origin xyz="-0.016 0.0 -0.0807" rpy="0 0 0"/>
     <parent link="r_shoulder_2"/>
     <child link="r_shoulder_3"/>
     <dynamics damping="0.1"/>
   </joint>
   <link name="r_upperarm">
     <inertial>
-      <origin xyz="0.00014706365601642457 -0.002335316124503606 -0.050116658948294965" rpy="0.12008559189031787 -0.2297881760318691 1.288278055899408"/>
-      <mass value="1.77224"/>
-      <inertia ixx="0.0033762" ixy="-7.67717e-05" ixz="-0.000513353" iyy="0.00337535" iyz="-0.000252914" izz="0.00175772"/>
+      <origin xyz="-0.0030867947823699435 -0.002937168853454547 -0.06410368770457339" rpy="0.12008559189031791 -0.22978817603186918 1.288278055899408"/>
+      <mass value="0.91"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
     </inertial>
-    <visual>
+    <!--visual>
       <origin xyz="0.020751359543703093 0.19966616827788958 -0.09124663357473975" rpy="0.12008559189031787 -0.2297881760318691 1.288278055899408"/>
       <geometry>
         <mesh filename="package://ergoCub/meshes/simmechanics/sim_ecub_r_upperarm_prt.stl" scale="0.001 0.001 0.001"/>
@@ -909,10 +909,10 @@
       <geometry>
         <mesh filename="package://ergoCub/meshes/simmechanics/sim_ecub_r_upperarm_prt.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision-->
   </link>
   <joint name="r_shoulder_yaw" type="revolute">
-    <origin xyz="0 0 -0.02250022557998886" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 -0.0689" rpy="0 0 0"/>
     <axis xyz="1.7133815359560156e-07 -2.3659291614741562e-07 0.999999570574365"/>
     <parent link="r_shoulder_3"/>
     <child link="r_upperarm"/>
@@ -942,7 +942,7 @@
     </collision>
   </link>
   <joint name="r_elbow" type="revolute">
-    <origin xyz="0.010000044612835832 0.0015000724494400042 -0.1236996308912752" rpy="0 0 0"/>
+    <origin xyz="0.010 0.0 -0.0519" rpy="0 0 0"/>
     <axis xyz="3.352246002574083e-07 -0.9999999783534191 2.2068612626213735e-07"/>
     <parent link="r_upperarm"/>
     <child link="r_forearm"/>
@@ -971,8 +971,34 @@
       </geometry>
     </collision>
   </link>
+  <link name="r_elbow_m">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.000288" ixy="0" ixz="0" iyy="0.000288" iyz="0" izz="0.000288"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+  </link>
+  <joint name="r_elbow_m" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 0"/>
+    <parent link="r_forearm"/>
+    <child link="r_elbow_m"/>
+    <dynamics damping="0.1"/>
+  </joint>
   <joint name="r_wrist_yaw" type="revolute">
-    <origin xyz="-0.015000200282364597 -0.002000693647607188 -0.19435006472514327" rpy="0 0 0"/>
+    <origin xyz="-0.012 0.0 -0.22835" rpy="0 0 0"/>
     <axis xyz="1.7133815359560156e-07 -2.3659291614741562e-07 0.999999570574365"/>
     <parent link="r_forearm"/>
     <child link="r_wrist_1"/>
@@ -1851,9 +1877,9 @@
   </joint>
   <link name="l_shoulder_2">
     <inertial>
-      <origin xyz="0.007519092064307464 0.0001880431797245119 -0.020486312998951983" rpy="0.12008501986317731 0.2297882840735942 1.8533146530335884"/>
-      <mass value="0.440933"/>
-      <inertia ixx="0.00039955" ixy="-5.1576e-05" ixz="6.56909e-05" iyy="0.000322676" iyz="7.97836e-05" izz="0.000272048"/>
+      <origin xyz="0.007519092064307464 0.0001880431797245119 -0.020486312998951983" rpy="0.0 -0.0 0.0"/>
+      <mass value="1.1"/>
+      <inertia ixx="0.0002914635403752522" ixy="1.144863294476959e-06" ixz="-9.910396071748334e-05" iyy="0.00043165336091243465" iyz="1.4346871911686881e-06" izz="0.00027115709871231323"/>
     </inertial>
     <visual>
       <origin xyz="0.01642850313247387 -0.19975933535232593 -0.1680239607265381" rpy="0.12008501986317731 0.2297882840735942 1.8533146530335884"/>
@@ -1881,9 +1907,9 @@
   </joint>
   <link name="l_shoulder_3">
     <inertial>
-      <origin xyz="8.299949315322686e-05 3.103648112065538e-05 -0.007966353749424879" rpy="0.12008501986317731 0.2297882840735942 1.8533146530335884"/>
-      <mass value="0.271466"/>
-      <inertia ixx="7.92721e-05" ixy="-1.10686e-06" ixz="-1.1157e-05" iyy="7.67239e-05" iyz="5.80189e-06" izz="0.000124087"/>
+      <origin xyz="8.299949315322686e-05 3.103648112065538e-05 -0.007966353749424879" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.33"/>
+      <inertia ixx="7.61973033477111e-05" ixy="-3.6665951965338007e-07" ixz="3.6365917228811246e-08" iyy="7.648758333757756e-05" iyz="6.094293566475328e-08" izz="0.00012739811331471135"/>
     </inertial>
     <visual>
       <origin xyz="0.020778568919260366 -0.1997595789508428 -0.11372408057794763" rpy="0.12008501986317731 0.2297882840735942 1.8533146530335884"/>
@@ -1902,18 +1928,18 @@
     </collision>
   </link>
   <joint name="l_arm_ft_sensor" type="fixed">
-    <origin xyz="-0.004350065786786487 2.435985168580679e-07 -0.054299880148590496" rpy="0 0 0"/>
+    <origin xyz="-0.016 0.0 -0.0807" rpy="0 0 0"/>
     <parent link="l_shoulder_2"/>
     <child link="l_shoulder_3"/>
     <dynamics damping="0.1"/>
   </joint>
   <link name="l_upperarm">
     <inertial>
-      <origin xyz="0.00013045033120965763 0.0022533114588239866 -0.05006471572755227" rpy="0.12008501986317731 0.2297882840735942 1.8533146530335884"/>
-      <mass value="1.77085"/>
-      <inertia ixx="0.00337743" ixy="7.38594e-05" ixz="0.000509552" iyy="0.0033716" iyz="-0.00025332" izz="0.00175055"/>
+      <origin xyz="-0.0033721736992639445 0.0014598078645076673 -0.06341050595990935" rpy="0.12008501986317736 0.22978828407359425 1.8533146530335884"/>
+      <mass value="0.91"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
     </inertial>
-    <visual>
+    <!--visual>
       <origin xyz="0.020778592897575728 -0.19975967103727527 -0.09122385499794652" rpy="0.12008501986317731 0.2297882840735942 1.8533146530335884"/>
       <geometry>
         <mesh filename="package://ergoCub/meshes/simmechanics/sim_ecub_l_upperarm_prt.stl" scale="0.001 0.001 0.001"/>
@@ -1927,10 +1953,10 @@
       <geometry>
         <mesh filename="package://ergoCub/meshes/simmechanics/sim_ecub_l_upperarm_prt.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision-->
   </link>
   <joint name="l_shoulder_yaw" type="revolute">
-    <origin xyz="0 0 -0.022500225580001282" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 -0.0689" rpy="0 0 0"/>
     <axis xyz="3.936910710766739e-07 -1.8507626386998766e-07 -0.9999995705743131"/>
     <parent link="l_shoulder_3"/>
     <child link="l_upperarm"/>
@@ -1960,7 +1986,7 @@
     </collision>
   </link>
   <joint name="l_elbow" type="revolute">
-    <origin xyz="0.01000011478523053 -0.001500064220488484 -0.12369962531821438" rpy="0 0 0"/>
+    <origin xyz="0.010 0.0 -0.0519" rpy="0 0 0"/>
     <axis xyz="-1.4958988243767013e-07 -0.9999999783534517 -2.7220291587415346e-07"/>
     <parent link="l_upperarm"/>
     <child link="l_forearm"/>
@@ -1989,8 +2015,34 @@
       </geometry>
     </collision>
   </link>
+  <link name="l_elbow_m">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.000288" ixy="0" ixz="0" iyy="0.000288" iyz="0" izz="0.000288"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+  </link>
+  <joint name="l_elbow_m" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 0"/>
+    <parent link="l_forearm"/>
+    <child link="l_elbow_m"/>
+    <dynamics damping="0.1"/>
+  </joint>
   <joint name="l_wrist_yaw" type="revolute">
-    <origin xyz="-0.015000090840254894 0.0020007008753266664 -0.19435007309759766" rpy="0 0 0"/>
+    <origin xyz="-0.012 0.0 -0.22835" rpy="0 0 0"/>
     <axis xyz="3.936910710766739e-07 -1.8507626386998766e-07 -0.9999995705743131"/>
     <parent link="l_forearm"/>
     <child link="l_wrist_1"/>
